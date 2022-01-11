@@ -1,0 +1,40 @@
+﻿@model TestSolution.Application.Model.Dtos.LoginRequest
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="row">    
+    <div class="span1">
+        <div class="well">
+            <h5>LOGIN</h5>
+            <form action="/Userlogin/Login" method="post">
+                <div class="control-group">
+                    <label class="control-label" for="inputEmail1">UserName</label>
+                    <div class="controls">
+                        <input class="span3" type="text" asp-for="UserName" placeholder="UserName" name="UserName">
+                        <span class="text-error"></span>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="inputPassword1">Password</label>
+                    <div class="controls">
+                        <input type="password" class="span3" asp-for="Password" placeholder="Password" name="Password">
+                        <span class="text-error"></span>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <div class="controls">
+                        <br/>
+                        <button type="submit" class="btn btn-large btn-success" >Sign in</button> <a href="/Userlogin/Register">Create Your Account</a>
+                    </div>
+                </div>
+
+                <div asp-validation-summary="All" class="text-error">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
