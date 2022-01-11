@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using TestSolution.Application.Model.Dtos;
 using TestSolution.Application.System.User;
 using TestSolution.Application.Utilities;
+using TestSolution.Application.VerifyData;
 
 namespace TestSolution.BackendApi.Controllers
 {
@@ -11,11 +12,11 @@ namespace TestSolution.BackendApi.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        private readonly IUserFormatter _userService;
+        private readonly IUserFormatter _userFormatter;
 
         public UsersController(IUserFormatter userService)
         {
-            _userService = userService;
+            _userFormatter = userService;
         }
 
         [HttpPost("authenticate")]
@@ -26,10 +27,15 @@ namespace TestSolution.BackendApi.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
             //
-            if (string.IsNullOrEmpty(request.UserName) || string.IsNullOrEmpty(request.Password))
-                return BadRequest(Messages.ERRMSG4);
-            //
-            var result = await _userService.Authenticate(request);
+            // Check valid data
+            var verifyMsg = Verify.DoVerify(request);
+            if (!string.IsNullOrEmpty(verifyMsg))
+            {
+                return BadRequest(verifyMsg);
+            }
+
+            // call service
+            var result = await _userFormatter.Authenticate(request);
             if (result.Status != ResponseStatus.OK)
             {
                 return BadRequest(result.Message);
@@ -46,10 +52,15 @@ namespace TestSolution.BackendApi.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            if (!request.Password.Equals(request.ConfirmPassword))
-                return BadRequest(Messages.ERRMSG5);
+            // Check valid data
+            var verifyMsg = Verify.DoVerify(request);
+            if (!string.IsNullOrEmpty(verifyMsg))
+            {
+                return BadRequest(verifyMsg);
+            }
 
-            var result = await _userService.Register(request);
+            /// call service
+            var result = await _userFormatter.Register(request);
             if (result.Status != ResponseStatus.OK)
             {
                 return BadRequest(result.Message);

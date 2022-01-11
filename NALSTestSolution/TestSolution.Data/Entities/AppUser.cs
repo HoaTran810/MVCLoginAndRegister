@@ -9,9 +9,9 @@ namespace TestSolution.Data.Entities
 {
     public class AppUser: IdentityUser<Guid>
     {
-        public string FirstName { get; set; }
+        public string FullName { get; set; }
 
-        public string LastName { get; set; }
+        public string AccountType { get; set; }
 
         public DateTime BirthDate { get; set; }
     }

@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.IdentityModel.Tokens.Jwt;
@@ -24,8 +23,25 @@ namespace TestSolution.Application.System.User
             _config = config;
         }
 
+        /// <summary>
+        /// Check login
+        /// </summary>
+        /// <param name="request">infor for login</param>
+        /// <returns></returns>
         public async Task<ResponseResult> Authenticate(LoginRequest request)
         {
+            // Invalid data
+            var errMsg = VerifyData.Verify.DoVerify(request);
+            if (!string.IsNullOrEmpty(errMsg))
+            {
+                return new ResponseResult
+                {
+                    Status = ResponseStatus.FAILED,
+                    Message = errMsg
+                };
+            }
+
+            // Find existed user
             var user = await _userQuery.FindByNameAsync(request.UserName);
             if (user == null)
                 return new ResponseResult
@@ -34,6 +50,7 @@ namespace TestSolution.Application.System.User
                     Message = Messages.ERRMSG6
                 };
 
+            // Check user and password
             var result = await _userQuery.PasswordSignInAsync(user, request.Password, request.RememberMe, true);
             if (!result.Succeeded)
                 return new ResponseResult
@@ -42,11 +59,11 @@ namespace TestSolution.Application.System.User
                     Message = Messages.ERRMSG7
                 };
 
-
+            // Roles
             var roles = await _userQuery.GetRolesAsync(user);
             var claims = new[]
             {
-                new Claim(ClaimTypes.GivenName,user.FirstName),
+                new Claim(ClaimTypes.GivenName,user.FullName),
                 new Claim(ClaimTypes.Email,user.Email),
                 new Claim(ClaimTypes.Role, string.Join(";",roles)),
                 new Claim(ClaimTypes.Name, request.UserName)
@@ -55,12 +72,14 @@ namespace TestSolution.Application.System.User
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Tokens:Key"]));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
+            // Get token string
             var token = new JwtSecurityToken(_config["Tokens:Issuer"],
                 _config["Tokens:Issuer"],
                 claims,
                 expires: DateTime.Now.AddHours(3),
                 signingCredentials: creds);
 
+            // Success
             return new ResponseResult
             {
                 Status = ResponseStatus.OK,
@@ -68,8 +87,25 @@ namespace TestSolution.Application.System.User
             };
         }
 
+        /// <summary>
+        /// Check and create userlogin
+        /// </summary>
+        /// <param name="request">Data query</param>
+        /// <returns></returns>
         public async Task<ResponseResult> Register(RegisterRequest request)
         {
+            // Invalid data
+            var errMsg = VerifyData.Verify.DoVerify(request);
+            if (!string.IsNullOrEmpty(errMsg))
+            {
+                return new ResponseResult
+                {
+                    Status = ResponseStatus.FAILED,
+                    Message = errMsg
+                };
+            }
+
+            // Find existed user
             var user = await _userQuery.FindByNameAsync(request.UserName);
             if (user != null)
             {
@@ -80,15 +116,28 @@ namespace TestSolution.Application.System.User
                 };
             }
 
+            // Object want to create
             user = new AppUser()
             {
                 BirthDate = request.BirthDate,
                 Email = request.Email,
-                FirstName = request.FirstName,
-                LastName = request.LastName,
+                FullName = request.FullName,
+                AccountType = request.AccountType,
                 UserName = request.UserName,
                 PhoneNumber = request.PhoneNumber
             };
+
+            // Password verification is not strong enough
+            if (!await _userQuery.CheckPasswordAsync(user, request.Password))
+            {
+                return new ResponseResult
+                {
+                    Status = ResponseStatus.FAILED,
+                    Message = Messages.ERRMSG14
+                };
+            }
+
+            // Process create
             var result = await _userQuery.CreateAsync(user, request.Password);
             return result.Succeeded ?
             new ResponseResult

@@ -149,7 +149,7 @@ namespace TestSolution.Data.Migrations
                         new
                         {
                             Id = new Guid("ade97465-7a86-4215-a19a-f753a88ee4a1"),
-                            ConcurrencyStamp = "c507bd58-43ef-4214-8b86-89782496bfed",
+                            ConcurrencyStamp = "8c031402-9e3a-4fcf-bb1f-8f581d1669ae",
                             Description = "Administrator role",
                             Name = "admin",
                             NormalizedName = "admin"
@@ -165,6 +165,11 @@ namespace TestSolution.Data.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
+                    b.Property<string>("AccountType")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
                     b.Property<DateTime>("BirthDate")
                         .HasColumnType("datetime2");
 
@@ -177,12 +182,7 @@ namespace TestSolution.Data.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
-
-                    b.Property<string>("LastName")
+                    b.Property<string>("FullName")
                         .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
@@ -226,16 +226,16 @@ namespace TestSolution.Data.Migrations
                         {
                             Id = new Guid("b81a303b-161c-4f45-b3bf-1903319a1cf7"),
                             AccessFailedCount = 0,
+                            AccountType = "utype1",
                             BirthDate = new DateTime(2020, 1, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ConcurrencyStamp = "9ebe08c6-6aa9-4469-ae9a-ca1eacc5ce93",
+                            ConcurrencyStamp = "ce30ec54-c294-4141-9afe-4de5047fd9bf",
                             Email = "dotest@gmail.com",
                             EmailConfirmed = true,
-                            FirstName = "Hoa",
-                            LastName = "Tran",
+                            FullName = "Hoa Tran",
                             LockoutEnabled = false,
                             NormalizedEmail = "dotest@gmail.com",
                             NormalizedUserName = "admin",
-                            PasswordHash = "AQAAAAEAACcQAAAAEHt8isO01SugWKLDajBnKVRMcp9LEEILmJQE+SOvSk/r44WLfsp3WS71bGQPOQTxHg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEM4MlYOAwrJ4/jFDWzDz2Sw12JiukvcBEe0FTUbpBiwEPckmgOX98eOZAlwg00nEwA==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,

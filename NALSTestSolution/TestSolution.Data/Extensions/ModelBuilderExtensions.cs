@@ -36,8 +36,8 @@ namespace TestSolution.Data.Extentions
                 EmailConfirmed = true,
                 PasswordHash = hasher.HashPassword(null, "Abc@123"),
                 SecurityStamp = string.Empty,
-                FirstName = "Hoa",
-                LastName = "Tran",
+                FullName = "Hoa Tran",
+                AccountType = "utype1",
                 BirthDate = new DateTime(2020, 01, 07)
             });
 

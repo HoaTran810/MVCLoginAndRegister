@@ -18,5 +18,7 @@ namespace TestSolution.Data.DataQuery.User
 
         public Task<IdentityResult> CreateAsync(AppUser user, string password);
 
+        public Task<bool> CheckPasswordAsync(AppUser user, string password);
+
     }
 }
