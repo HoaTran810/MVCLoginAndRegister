@@ -1,0 +1,11 @@
+E:\Users\HOA\Desktop\NALS_Test\NALSRegisterLogin3\Git_MVCLoginAndRegister\MVCLoginAndRegister\NALSTestSolution\TestSolution.Utilities\bin\Debug\net5.0\TestSolution.Utilities.deps.json
+E:\Users\HOA\Desktop\NALS_Test\NALSRegisterLogin3\Git_MVCLoginAndRegister\MVCLoginAndRegister\NALSTestSolution\TestSolution.Utilities\bin\Debug\net5.0\TestSolution.Utilities.dll
+E:\Users\HOA\Desktop\NALS_Test\NALSRegisterLogin3\Git_MVCLoginAndRegister\MVCLoginAndRegister\NALSTestSolution\TestSolution.Utilities\bin\Debug\net5.0\ref\TestSolution.Utilities.dll
+E:\Users\HOA\Desktop\NALS_Test\NALSRegisterLogin3\Git_MVCLoginAndRegister\MVCLoginAndRegister\NALSTestSolution\TestSolution.Utilities\bin\Debug\net5.0\TestSolution.Utilities.pdb
+E:\Users\HOA\Desktop\NALS_Test\NALSRegisterLogin3\Git_MVCLoginAndRegister\MVCLoginAndRegister\NALSTestSolution\TestSolution.Utilities\obj\Debug\net5.0\TestSolution.Utilities.GeneratedMSBuildEditorConfig.editorconfig
+E:\Users\HOA\Desktop\NALS_Test\NALSRegisterLogin3\Git_MVCLoginAndRegister\MVCLoginAndRegister\NALSTestSolution\TestSolution.Utilities\obj\Debug\net5.0\TestSolution.Utilities.AssemblyInfoInputs.cache
+E:\Users\HOA\Desktop\NALS_Test\NALSRegisterLogin3\Git_MVCLoginAndRegister\MVCLoginAndRegister\NALSTestSolution\TestSolution.Utilities\obj\Debug\net5.0\TestSolution.Utilities.AssemblyInfo.cs
+E:\Users\HOA\Desktop\NALS_Test\NALSRegisterLogin3\Git_MVCLoginAndRegister\MVCLoginAndRegister\NALSTestSolution\TestSolution.Utilities\obj\Debug\net5.0\TestSolution.Utilities.csproj.CoreCompileInputs.cache
+E:\Users\HOA\Desktop\NALS_Test\NALSRegisterLogin3\Git_MVCLoginAndRegister\MVCLoginAndRegister\NALSTestSolution\TestSolution.Utilities\obj\Debug\net5.0\TestSolution.Utilities.dll
+E:\Users\HOA\Desktop\NALS_Test\NALSRegisterLogin3\Git_MVCLoginAndRegister\MVCLoginAndRegister\NALSTestSolution\TestSolution.Utilities\obj\Debug\net5.0\ref\TestSolution.Utilities.dll
+E:\Users\HOA\Desktop\NALS_Test\NALSRegisterLogin3\Git_MVCLoginAndRegister\MVCLoginAndRegister\NALSTestSolution\TestSolution.Utilities\obj\Debug\net5.0\TestSolution.Utilities.pdb

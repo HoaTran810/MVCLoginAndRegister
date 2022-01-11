@@ -8,8 +8,8 @@ namespace TestSolution.WebApp.ApiIntegration
 {
     public interface IUserApiClient
     {
-        Task<ApiClientResult> Authenticate(LoginRequest request);
+        Task<ResponseResult> Authenticate(LoginRequest request);
 
-        Task<ApiClientResult> RegisterUser(RegisterRequest registerRequest);
+        Task<ResponseResult> RegisterUser(RegisterRequest registerRequest);
     }
 }

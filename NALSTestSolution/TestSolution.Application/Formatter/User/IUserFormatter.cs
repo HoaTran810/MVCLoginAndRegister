@@ -7,10 +7,10 @@ using TestSolution.Application.Model.Dtos;
 
 namespace TestSolution.Application.System.User
 {
-    public interface IUserService
+    public interface IUserFormatter
     {
-        public Task<string> Authenticate(LoginRequest request);
+        public Task<ResponseResult> Authenticate(LoginRequest request);
 
-        public Task<bool> Register(RegisterRequest request);
+        public Task<ResponseResult> Register(RegisterRequest request);
     }
 }

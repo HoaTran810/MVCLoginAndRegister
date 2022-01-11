@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TestSolution.Data\TestSolution.Data.csproj" />
+    <ProjectReference Include="..\TestSolution.Utilities\TestSolution.Utilities.csproj" />
   </ItemGroup>
 
 </Project>

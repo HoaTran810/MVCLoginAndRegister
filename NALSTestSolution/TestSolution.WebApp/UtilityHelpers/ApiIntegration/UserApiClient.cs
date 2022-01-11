@@ -25,7 +25,7 @@ namespace TestSolution.WebApp.ApiIntegration
             _httpClientFactory = httpClientFactory;
         }
 
-        public async Task<ApiClientResult> Authenticate(LoginRequest request)
+        public async Task<ResponseResult> Authenticate(LoginRequest request)
         {
             var json = JsonConvert.SerializeObject(request);
             var httpContent = new StringContent(json, Encoding.UTF8, "application/json");
@@ -36,21 +36,21 @@ namespace TestSolution.WebApp.ApiIntegration
             if (response.IsSuccessStatusCode)
             {
                 var dataresponse = await response.Content.ReadAsStringAsync();
-                return new ApiClientResult
+                return new ResponseResult
                 {
                     Status = ResponseStatus.OK,
                     Message = dataresponse
                 };
             }
                         
-            return new ApiClientResult
+            return new ResponseResult
             {
                 Status = ResponseStatus.FAILED,
                 Message = await response.Content.ReadAsStringAsync()
             };
         }
 
-        public async Task<ApiClientResult> RegisterUser(RegisterRequest registerRequest)
+        public async Task<ResponseResult> RegisterUser(RegisterRequest registerRequest)
         {
             var client = _httpClientFactory.CreateClient();
             client.BaseAddress = new Uri(_configuration["BaseAddress"]);
@@ -61,13 +61,13 @@ namespace TestSolution.WebApp.ApiIntegration
             var response = await client.PostAsync("/api/users/Register", httpContent);
             var result = await response.Content.ReadAsStringAsync();
             if (response.IsSuccessStatusCode)
-                return new ApiClientResult
+                return new ResponseResult
                 {
                     Status = ResponseStatus.OK,
                     Message = result
                 };
 
-            return new ApiClientResult
+            return new ResponseResult
             {
                 Status = ResponseStatus.FAILED,
                 Message = result

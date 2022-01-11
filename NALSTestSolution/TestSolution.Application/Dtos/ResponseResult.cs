@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TestSolution.Application.Model.Dtos
 {
-    public class ApiClientResult
+    public class ResponseResult
     {
         /// <summary>
         /// Ok=1 or Failed=2

@@ -7,9 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestSolution.Data", "TestSo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestSolution.Application", "TestSolution.Application\TestSolution.Application.csproj", "{0FFD8666-235E-44C4-9AE8-F542581282A7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestSolution.BackendApi", "TestSolution.BackendApi\TestSolution.BackendApi.csproj", "{2481EACB-A1EC-4C09-A37D-5FB1AE7FF7EF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestSolution.WebApi", "TestSolution.BackendApi\TestSolution.WebApi.csproj", "{2481EACB-A1EC-4C09-A37D-5FB1AE7FF7EF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestSolution.WebApp", "TestSolution.WebApp\TestSolution.WebApp.csproj", "{670B59BF-FACD-4A61-A9EF-AC990DD7D6ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestSolution.Utilities", "TestSolution.Utilities\TestSolution.Utilities.csproj", "{03284F5D-8DBF-4E9C-A9AE-A06E2E324102}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{670B59BF-FACD-4A61-A9EF-AC990DD7D6ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{670B59BF-FACD-4A61-A9EF-AC990DD7D6ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{670B59BF-FACD-4A61-A9EF-AC990DD7D6ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03284F5D-8DBF-4E9C-A9AE-A06E2E324102}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03284F5D-8DBF-4E9C-A9AE-A06E2E324102}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03284F5D-8DBF-4E9C-A9AE-A06E2E324102}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03284F5D-8DBF-4E9C-A9AE-A06E2E324102}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

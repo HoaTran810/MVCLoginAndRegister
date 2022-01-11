@@ -5,6 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Models\**" />
+    <Content Remove="Models\**" />
+    <EmbeddedResource Remove="Models\**" />
+    <None Remove="Models\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\TestSolution.Application\TestSolution.Application.csproj" />
     <ProjectReference Include="..\TestSolution.Data\TestSolution.Data.csproj" />
   </ItemGroup>

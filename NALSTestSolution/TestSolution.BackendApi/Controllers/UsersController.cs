@@ -11,9 +11,9 @@ namespace TestSolution.BackendApi.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        private readonly IUserService _userService;
+        private readonly IUserFormatter _userService;
 
-        public UsersController(IUserService userService)
+        public UsersController(IUserFormatter userService)
         {
             _userService = userService;
         }
@@ -22,16 +22,21 @@ namespace TestSolution.BackendApi.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Authenticate([FromBody] LoginRequest request)
         {
+            //
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
-
+            //
+            if (string.IsNullOrEmpty(request.UserName) || string.IsNullOrEmpty(request.Password))
+                return BadRequest(Messages.ERRMSG4);
+            //
             var result = await _userService.Authenticate(request);
-
-            if (string.IsNullOrEmpty(result))
+            if (result.Status != ResponseStatus.OK)
             {
-                return BadRequest(Messages.ERRMSG2);
+                return BadRequest(result.Message);
             }
-            return Ok(result);
+
+            // OK
+            return Ok(result.Message);
         }
 
         [HttpPost("register")]
@@ -41,13 +46,16 @@ namespace TestSolution.BackendApi.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
+            if (!request.Password.Equals(request.ConfirmPassword))
+                return BadRequest(Messages.ERRMSG5);
+
             var result = await _userService.Register(request);
-            if (!result)
+            if (result.Status != ResponseStatus.OK)
             {
-                return BadRequest(Messages.ERRMSG3);
+                return BadRequest(result.Message);
             }
 
-            return Ok(Messages.INFOMSG1);
+            return Ok(result.Message);
         }
     }
 }

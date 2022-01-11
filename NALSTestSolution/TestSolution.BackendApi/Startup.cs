@@ -12,6 +12,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TestSolution.Application.System.User;
 using TestSolution.Data.Constants;
+using TestSolution.Data.DataQuery.User;
 using TestSolution.Data.EF;
 using TestSolution.Data.Entities;
 
@@ -32,6 +33,7 @@ namespace TestSolution.BackendApi
             services.AddDbContext<NTDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString(SystemConstants.ConnectionString)));
 
+            // Data
             services.AddIdentity<AppUser, AppRole>()
                 .AddEntityFrameworkStores<NTDbContext>()
                 .AddDefaultTokenProviders();
@@ -39,7 +41,10 @@ namespace TestSolution.BackendApi
             services.AddTransient<UserManager<AppUser>, UserManager<AppUser>>();
             services.AddTransient<SignInManager<AppUser>, SignInManager<AppUser>>();
             services.AddTransient<RoleManager<AppRole>, RoleManager<AppRole>>();
-            services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IUserQuery, UserQuery>();
+
+            // Format
+            services.AddTransient<IUserFormatter, UserFormatter>();
 
             services.AddControllersWithViews();
         }
