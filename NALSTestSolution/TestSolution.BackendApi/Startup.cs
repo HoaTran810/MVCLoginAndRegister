@@ -34,7 +34,16 @@ namespace TestSolution.BackendApi
                 options.UseSqlServer(Configuration.GetConnectionString(SystemConstants.ConnectionString)));
 
             // Data
-            services.AddIdentity<AppUser, AppRole>()
+            services.AddIdentity<AppUser, AppRole>(
+                option =>
+                {
+                    option.Password.RequireDigit = false;
+                    option.Password.RequiredLength = 5;
+                    option.Password.RequireNonAlphanumeric = false;
+                    option.Password.RequireUppercase = false;
+                    option.Password.RequireLowercase = false;
+                    option.SignIn.RequireConfirmedEmail = false;
+                })
                 .AddEntityFrameworkStores<NTDbContext>()
                 .AddDefaultTokenProviders();
 

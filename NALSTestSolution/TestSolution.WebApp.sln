@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestSolution.Utilities", "T
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{2D2939F8-E549-44B0-9362-D2545B35D194}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestSolution.UnitTest", "TestSolution.UnitTest\TestSolution.UnitTest.csproj", "{766118F5-97C9-4AC9-A3C4-FC383FCE882F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestSolution.UnitTest", "TestSolution.UnitTest\TestSolution.UnitTest.csproj", "{766118F5-97C9-4AC9-A3C4-FC383FCE882F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -50,6 +50,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{766118F5-97C9-4AC9-A3C4-FC383FCE882F} = {2D2939F8-E549-44B0-9362-D2545B35D194}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5555E250-E264-4B77-8A0C-797492E96BEE}

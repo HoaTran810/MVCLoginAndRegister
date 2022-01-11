@@ -128,7 +128,8 @@ namespace TestSolution.Application.System.User
             };
 
             // Password verification is not strong enough
-            if (!await _userQuery.CheckPasswordAsync(user, request.Password))
+            bool checkPassword = await _userQuery.CheckPasswordAsync(user, request.Password);
+            if (!checkPassword)
             {
                 return new ResponseResult
                 {

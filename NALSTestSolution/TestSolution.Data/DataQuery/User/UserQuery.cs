@@ -11,6 +11,11 @@ namespace TestSolution.Data.DataQuery.User
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;                
 
+        /// <summary>
+        /// Init
+        /// </summary>
+        /// <param name="userManager"></param>
+        /// <param name="signInManager"></param>
         public UserQuery(UserManager<AppUser> userManager,
             SignInManager<AppUser> signInManager)
         {

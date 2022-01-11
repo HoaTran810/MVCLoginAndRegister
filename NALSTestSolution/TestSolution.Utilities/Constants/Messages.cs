@@ -22,7 +22,7 @@ namespace TestSolution.Application.Utilities
         public static string ERRMSG11 = "Họ tên không có";
         public static string ERRMSG12 = "AccountType không có";
         public static string ERRMSG13 = "Số điện thoại không có";
-        public static string ERRMSG14 = "Mật khẩu quá đơn giản.";
+        public static string ERRMSG14 = "Mật khẩu không đạt tiêu chuẩn.";
 
         public static string INFOMSG1 = "Đăng ký thành công.";
     }
