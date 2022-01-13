@@ -50,5 +50,11 @@ namespace TestSolution.Data.DataQuery.User
         /// <returns></returns>
         public Task<bool> CheckPasswordAsync(AppUser user, string password);
 
+        /// <summary>
+        /// PasswordValidateAsync
+        /// </summary>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        public Task<List<string>> PasswordValidateAsync(string password);
     }
 }

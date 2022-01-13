@@ -88,7 +88,7 @@ namespace TestSolution.Application.System.User
         }
 
         /// <summary>
-        /// Check and create userlogin
+        /// Register account login
         /// </summary>
         /// <param name="request">Data query</param>
         /// <returns></returns>
@@ -128,8 +128,8 @@ namespace TestSolution.Application.System.User
             };
 
             // Password verification is not strong enough
-            bool checkPassword = await _userQuery.CheckPasswordAsync(user, request.Password);
-            if (!checkPassword)
+            var checkPwdMgs = await _userQuery.PasswordValidateAsync(request.Password);
+            if (checkPwdMgs.Count > 0)
             {
                 return new ResponseResult
                 {

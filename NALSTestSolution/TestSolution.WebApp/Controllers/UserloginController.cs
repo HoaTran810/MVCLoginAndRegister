@@ -62,7 +62,7 @@ namespace TestSolution.WebApp.Controllers
                         CookieAuthenticationDefaults.AuthenticationScheme,
                         userPrincipal,
                         authProperties);
-
+                        
             return RedirectToAction(ActionName.Index, ControllerName.Home);
         }
         #endregion
