@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using TestSolution.Data.Entities;
@@ -76,6 +75,35 @@ namespace TestSolution.Data.DataQuery.User
         public Task<bool> CheckPasswordAsync(AppUser user, string password)
         {
             return _userManager.CheckPasswordAsync(user, password);
+        }
+
+        /// <summary>
+        /// Check password meet the conditions
+        /// </summary>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        public async Task<List<string>> PasswordValidateAsync(string password)
+        {
+            var passwordErrors = new List<string>();
+
+            // All of conditions
+            var validators = _userManager.PasswordValidators;
+
+            foreach (var validator in validators)
+            {
+                var result = await validator.ValidateAsync(_userManager, null, password);
+
+                if (!result.Succeeded)
+                {
+                    // Error
+                    foreach (var error in result.Errors)
+                    {
+                        passwordErrors.Add(error.Description);
+                    }
+                }
+            }
+
+            return passwordErrors;
         }
     }
 }
