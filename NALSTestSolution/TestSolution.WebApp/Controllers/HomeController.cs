@@ -9,6 +9,9 @@ namespace TestSolution.WebApp.Controllers
     {
         public IActionResult Index()
         {
+            var fullName = HttpContext.Session.GetString("FullName");
+            ViewData["FullName"] = fullName;
+
             return View();
         }
     }

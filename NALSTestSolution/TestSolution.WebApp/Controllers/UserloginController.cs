@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using System;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using TestSolution.Application.Model.Dtos;
 using TestSolution.Application.Utilities;
@@ -58,6 +59,8 @@ namespace TestSolution.WebApp.Controllers
             };
 
             HttpContext.Session.SetString(SystemConstants.Token, result.Message);
+            HttpContext.Session.SetString("FullName", userPrincipal.FindFirstValue(ClaimTypes.GivenName).ToString());
+
             await HttpContext.SignInAsync(
                         CookieAuthenticationDefaults.AuthenticationScheme,
                         userPrincipal,
